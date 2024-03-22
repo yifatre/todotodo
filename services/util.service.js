@@ -5,7 +5,8 @@ export const utilService = {
     loadFromStorage,
     saveToStorage,
     animateCSS,
-    debounce
+    debounce,
+    getFormattedDate
 }
 
 function makeId(length = 6) {
@@ -70,4 +71,10 @@ function debounce(func, timeout = 300) {
             func.apply(this, args)
         }, timeout)
     }
+}
+
+function getFormattedDate(timestamp, isReversed = false) {
+    let str = new Date(timestamp).toISOString().slice(0, 10)
+    if (isReversed) str = str.split('-').toReversed().join('-')
+    return str
 }

@@ -1,5 +1,5 @@
 import { todoService } from "../../services/todo.service.js"
-import { REMOVE_TODO, SAVE_TODO, SET_TODOS, store } from "../store.js"
+import { REMOVE_TODO, ADD_TODO, SET_TODOS, UPDATE_TODO, store } from "../store.js"
 
 export function loadTodos(filterBy) {
     return todoService.query(filterBy)
@@ -11,17 +11,24 @@ export function loadTodos(filterBy) {
 }
 
 export function removeTodo(todoId) {
-    return todoService.remove(filterBy)
-        .then(todos => store.dispatch({ type: REMOVE_TODO, todoId }))
+    return todoService.remove(todoId)
+        .then(() => store.dispatch({ type: REMOVE_TODO, todoId }))
         .catch(err => {
             console.log('todo action -> Cannot remove todo', err)
             throw err
         })
 }
 
-export function saveTodo(todoId) {
-    return todoService.save(filterBy)
-        .then(todos => store.dispatch({ type: SAVE_TODO, todoId }))
+export function saveTodo(todo) {
+    const type = todo._id ? UPDATE_TODO : ADD_TODO
+    if (!todo._id) todo.createdAt = Date.now()
+
+    return todoService.save(todo)
+        .then(savedTodo => {
+            // console.log('todo from dispatch', savedTodo)
+            store.dispatch({ type, todo: savedTodo })
+            return savedTodo
+        })
         .catch(err => {
             console.log('todo action -> Cannot save todo', err)
             throw err

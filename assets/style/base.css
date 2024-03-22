@@ -1,0 +1,19 @@
+* {
+    box-sizing: border-box;
+}
+
+button{
+    cursor: pointer;
+}
+
+.btn-pill{
+    background-color: #fff;
+    border: 1px solid gray;
+    border-radius: 3em;
+    padding: 0.3rem;
+    min-width: 3rem;
+}
+
+.btn-pill:hover{
+    background-color: blanchedalmond;
+}

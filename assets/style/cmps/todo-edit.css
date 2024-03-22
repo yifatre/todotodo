@@ -1,0 +1,9 @@
+.todo-edit {
+    width: max-content;
+}
+
+.todo-edit input {
+    background: none;
+    border: none;
+    border-bottom: 1px solid gray;
+}

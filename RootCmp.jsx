@@ -1,7 +1,7 @@
 import { AppHeader } from "./cmps/AppHeader.jsx"
-import { TodoApp } from "./cmps/TodoApp.jsx"
-import { TodoDetails } from "./cmps/TodoDetails"
-import { TodoEdit } from "./cmps/TodoEdit"
+import { TodoApp } from "./pages/TodoIndex.jsx"
+import { TodoDetails } from "./cmps/TodoDetails.jsx"
+import { TodoEdit } from "./cmps/TodoEdit.jsx"
 import { TodoList } from "./cmps/TodoList.jsx"
 import { store } from "./store/store.js"
 
@@ -24,6 +24,7 @@ export class App extends React.Component {
                                 <Route element={<TodoApp />} path="/" >
                                     <Route path="/todo" element={<TodoList />} />
                                     <Route path="/todo/:todoId" element={<TodoDetails />} />
+                                    <Route path="/todo/edit/" element={<TodoEdit />} />
                                     <Route path="/todo/edit/:todoId" element={<TodoEdit />} />
                                 </Route>
                             </Routes>

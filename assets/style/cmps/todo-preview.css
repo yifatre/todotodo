@@ -1,0 +1,36 @@
+.todo-list li {
+    grid-template-columns: max-content 1fr max-content;
+    column-gap: 0.4rem;
+}
+
+.todo-list li:nth-of-type(2n) {
+    background-color: #f0f0f0;
+}
+
+.todo-list li:hover {
+    background-color: aliceblue;
+}
+
+.todo-list li:not(:last-of-type)>*,
+.todo-list li:not(:last-of-type, :nth-last-of-type(2)) {
+    cursor: pointer;
+}
+
+.todo-list li input {
+    grid-column: 1;
+}
+
+.todo-list li label {
+    grid-column: 2;
+}
+
+.todo-list li .done {
+    text-decoration: line-through;
+    color: gray;
+}
+
+.todo-list li button {
+    grid-column: 3;
+    background: none;
+    border: none;
+}
