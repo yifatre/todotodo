@@ -13,7 +13,6 @@ export function TodoApp() {
     const [filterBy, setFilterBy] = useState(todoService.getDefaultFilter())
 
     useEffect(() => {
-        console.log('filterBy', filterBy)
         loadTodos(filterBy)
             .catch(err => {
                 console.log('err', err)
@@ -22,7 +21,6 @@ export function TodoApp() {
     }, [filterBy])
 
     function onToggleDone(todo) {
-        console.log('todo', todo)
         saveTodo(todo)
             .then(savedTodo => showSuccessMsg(`Marked as ${savedTodo.isDone}`))
             .catch(err => {

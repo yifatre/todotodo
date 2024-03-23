@@ -1,0 +1,14 @@
+.app-header .progress{
+    grid-template-columns: var(--done-count) var(--undone-count);
+    width: 6rem;
+    height: 1rem;
+    
+}
+
+.app-header .progress .done{
+    background-color: green;
+}
+
+.app-header .progress .undone{
+    background-color: red;
+}

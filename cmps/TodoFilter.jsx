@@ -9,7 +9,6 @@ export function TodoFilter({ filterBy, onSetFilter }) {
 
     useEffect(() => {
         onSetFilter.current(filterByToEdit)
-        console.log('filterByToEdit', filterByToEdit)
     }, [filterByToEdit])
 
     function handleChange({ target }) {

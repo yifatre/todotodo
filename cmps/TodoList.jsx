@@ -11,7 +11,6 @@ export function TodoList({ todos, onToggleDone, onRemoveTodo }) {
     }
 
     return <ul className="todo-list clean-list grid">
-        {console.log('todos', todos)}
         {todos.map(todo => <li className="grid" key={todo._id}>
             <TodoPreview todo={todo} onToggleDone={onToggleDone} />
             <button onClick={() => onRemoveTodo(todo._id)}>✕</button>

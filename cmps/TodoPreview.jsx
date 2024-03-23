@@ -4,7 +4,6 @@ const { Fragment } = React
 export function TodoPreview({ todo, onToggleDone }) {
 
     function handleChange({ target }) {
-        console.log('', target.checked)
         onToggleDone({ ...todo, isDone: target.checked })
     }
 

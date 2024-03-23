@@ -4,7 +4,6 @@ import { REMOVE_TODO, ADD_TODO, SET_TODOS, UPDATE_TODO, store } from "../store.j
 export function loadTodos(filterBy) {
     return todoService.query(filterBy)
         .then(todos => {
-            console.log('todos', todos)
             store.dispatch({ type: SET_TODOS, todos })})
         .catch(err => {
             console.log('todo action -> Cannot load todos', err)

@@ -25,7 +25,6 @@ export function TodoEdit({ setIsNewLine }) {
 
     function onSave(ev) {
         ev.preventDefault()
-        console.log('todo from save', todo)
         saveTodo(todo)
         setIsNewLine(false)
     }
