@@ -24,7 +24,7 @@ export function TodoApp() {
     function onToggleDone(todo) {
         console.log('todo', todo)
         saveTodo(todo)
-            .then(savedTodo => showSuccessMsg(`Marked as ${saveTodo.isDone}`))
+            .then(savedTodo => showSuccessMsg(`Marked as ${savedTodo.isDone}`))
             .catch(err => {
                 console.log('err', err)
                 showErrorMsg(`Cannot mark as ${todo.isDone}`)
@@ -48,6 +48,6 @@ export function TodoApp() {
 
     return <section>
         <TodoFilter filterBy={filterBy} onSetFilter={onSetFilter} />
-        <TodoList todos={todos} onToggleDone={onToggleDone} onRemoveTodo={onRemoveTodo} />
+        {todos && <TodoList todos={todos} onToggleDone={onToggleDone} onRemoveTodo={onRemoveTodo} />}
     </section>
 }

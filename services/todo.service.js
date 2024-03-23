@@ -8,13 +8,17 @@ export const todoService = {
     remove,
     save,
     getEmptyTodo,
-    getDefaultFilter
+    getDefaultFilter,
+    getTotalCount,
+    getDoneCount
 }
 
 function query(filterBy = {}) {
     // console.log('query filterBy', filterBy)
     return storageService.query(STORAGE_KEY)
         .then(todos => {
+            // const total = todos.length
+            // const done = todos.filter(todo => todo.isDone === true).length
             // console.log('todos', todos)
             if (filterBy.createdAt) {
                 todos = todos.filter(todo => todo.createdAt < filterBy.createdAt)
@@ -52,6 +56,15 @@ function getEmptyTodo() {
     }
 }
 
+function getTotalCount() {
+    return query()
+        .then(todos => todos.length)
+}
+
+function getDoneCount() {
+    return query({ isDone: true })
+        .then(todos => todos.length)
+}
 
 
 function getDefaultFilter() {

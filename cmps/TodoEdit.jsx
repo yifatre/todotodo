@@ -33,7 +33,7 @@ export function TodoEdit({ setIsNewLine }) {
 
     return <form className="todo-edit" onSubmit={onSave}>
         <input type="checkbox" name="isDone" id="" checked={todo.isDone} onChange={handleChange} />
-        <input type="text" name="txt" placeholder="To do..." value={todo.txt} onChange={handleChange} />
+        <input type="text" name="txt" placeholder="To do..." value={todo.txt} onChange={handleChange} autoFocus required/>
         <button>Save</button>
     </form>
 }
