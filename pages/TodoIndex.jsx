@@ -9,7 +9,7 @@ import { loadTodos, saveTodo, removeTodo } from "../store/actions/todo.actions.j
 
 export function TodoApp() {
     const dispatch = useDispatch()
-    const todos = useSelector(storeState => storeState.todos)
+    const todos = useSelector(storeState => storeState.todoModule.todos)
     const [filterBy, setFilterBy] = useState(todoService.getDefaultFilter())
 
     useEffect(() => {

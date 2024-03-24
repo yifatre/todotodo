@@ -10,12 +10,12 @@ import { LoginSignUp } from "./LoginSignup.jsx"
 
 export function AppHeader() {
     const dispatch = useDispatch()
-    const todos = useSelector(storeState => storeState.todos)
-    const user = useSelector(storeState => storeState.loggedInUser)
-    const [todoProgress, setTodoProgress] = useState(({ total: todos.length, done: todos.filter(todo => todo.isDone === true).length }))
-
+    const todos = useSelector(storeState => storeState.todoModule.todos)
+    const user = useSelector(storeState => storeState.userModule.loggedInUser)
+    const [todoProgress, setTodoProgress] = useState({ done: 1, total: 3 })
+console.log('user', user)
     useEffect(() => {
-        setTodoProgress(({ total: todos.length, done: todos.filter(todo => todo.isDone === true).length }))
+        // setTodoProgress(({ total: todos.length, done: todos.filter(todo => todo.isDone === true).length }))
     }, [todos])
     useEffect(() => {
         document.documentElement.style.setProperty('--done-count', `${todoProgress.done / todoProgress.total}fr`)
