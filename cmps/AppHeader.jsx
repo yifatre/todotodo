@@ -1,4 +1,5 @@
 const { useState, useEffect } = React
+const { Link } = ReactRouterDOM
 const { useSelector, useDispatch } = ReactRedux
 
 import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service.js"
@@ -13,14 +14,7 @@ export function AppHeader() {
     const todos = useSelector(storeState => storeState.todoModule.todos)
     const user = useSelector(storeState => storeState.userModule.loggedInUser)
     const [todoProgress, setTodoProgress] = useState({ done: 1, total: 3 })
-console.log('user', user)
-    useEffect(() => {
-        // setTodoProgress(({ total: todos.length, done: todos.filter(todo => todo.isDone === true).length }))
-    }, [todos])
-    useEffect(() => {
-        document.documentElement.style.setProperty('--done-count', `${todoProgress.done / todoProgress.total}fr`)
-        document.documentElement.style.setProperty('--undone-count', `${1 - todoProgress.done / todoProgress.total}fr`)
-    }, [todoProgress])
+    console.log('user', user)
 
     function onLogout() {
         logout()
@@ -32,18 +26,32 @@ console.log('user', user)
             })
     }
 
+    function getDoneTodosPercent() {
+        const doneTodosCount = todos.reduce((acc, todo) => {
+            if (todo.isDone) acc++
+            return acc
+        }, 0)
 
-    return <header className="app-header">
-        Todotodo
-        {user ? <section>
+        return (doneTodosCount / todos.length) * 100 || 0
+    }
+
+    return <header className="app-header grid">
+        <div className="logo flex">
+            <img src="../assets/img/logo.png" alt="" />
+            <h1>Todotodo</h1>
+        </div>
+        {user ? <section className="user-hello grid">
             <span> {/*to={`/user/${user._id}`}*/}
-                Hello {user.fullName}
+                Hello&nbsp;
+                <Link to="/user" >
+                    {user.fullName}
+                </Link>
             </span>
-            <div className="progress grid">
-                <div className="done"></div>
-                <div className="undone"></div>
-            </div>
-            <button onClick={onLogout}>Logout</button>
+            {todos && <div className="progress">
+                <div className="done" style={{width:`${getDoneTodosPercent()}%`}}></div>
+                <span className="percents">{`${getDoneTodosPercent().toFixed(2)}%`}</span>
+            </div>}
+            <button className="btn-pill" onClick={onLogout}>Logout</button>
         </section> : <LoginSignUp />
         }
     </header >

@@ -1,0 +1,17 @@
+.app{
+    grid-template-areas: 
+    "header"
+    "main"
+    ;
+}
+
+.app .app-header{
+    grid-area: header;
+    grid-template-areas: "logo . hello";
+    grid-template-columns: max-content 1fr max-content;
+}
+
+.app .main-layout{
+    grid-area: main;
+    margin-inline: 1rem;
+}

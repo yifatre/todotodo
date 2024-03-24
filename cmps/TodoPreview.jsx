@@ -9,6 +9,6 @@ export function TodoPreview({ todo, onToggleDone }) {
 
     return <Fragment>
         <input type="checkbox" name="isdone" id={todo._id} checked={todo.isDone} onChange={handleChange} />
-        <label htmlFor={todo._id}><span className={todo.isDone ? 'done' : ''}>{todo.txt}</span>{utilService.getFormattedDate(todo.createdAt, true)}</label>
+        <label htmlFor={todo._id}><span className={todo.isDone ? 'done' : ''}>{todo.txt}</span></label>
     </Fragment>
 }

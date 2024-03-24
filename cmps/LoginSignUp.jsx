@@ -41,7 +41,7 @@ export function LoginSignUp() {
     }
 
 
-    return <section className="login">
+    return <section className="login grid">
         <form className="login-form" onSubmit={onLogin}>
             <input
                 type="text"
